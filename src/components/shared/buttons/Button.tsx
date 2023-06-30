@@ -1,5 +1,5 @@
-import { BUTTON_VARIATIONS } from "../../../constants/buttons";
-import { ButtonProps } from "../../../interfaces/buttonProps";
+import { BUTTON_VARIATIONS } from "constants/buttons";
+import { ButtonProps } from "interfaces/buttonProps";
 import classNames from "classnames";
 
 function Button({

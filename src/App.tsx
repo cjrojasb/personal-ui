@@ -1,6 +1,6 @@
 import "./index.css";
 import { MdDelete } from "react-icons/md";
-import Button from "./components/shared/buttons/Button";
+import Button from "components/shared/buttons/Button";
 
 function App() {
   return (
