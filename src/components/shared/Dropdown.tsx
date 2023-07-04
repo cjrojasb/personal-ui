@@ -1,10 +1,11 @@
 import { DropdownProps } from "interfaces/dropdownProps";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Panel from "./Panel";
 
 function Dropdown({ options, value, onChange }: DropdownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const divEl = useRef<HTMLInputElement>(null);
 
   const handleOpen = () => setIsOpen(!isOpen);
 
@@ -12,8 +13,23 @@ function Dropdown({ options, value, onChange }: DropdownProps) {
     onChange(value);
     handleOpen();
   };
+
+  useEffect(() => {
+    const handler = (event: any) => {
+      if (!divEl.current?.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handler, true);
+
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  }, []);
+
   return (
-    <div className="w-48 relative">
+    <div ref={divEl} className="w-48 relative">
       <Panel
         className="flex justify-between items-center cursor-pointer"
         onClick={handleOpen}

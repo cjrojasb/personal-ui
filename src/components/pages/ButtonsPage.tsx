@@ -1,18 +1,10 @@
-import { MdDelete } from "react-icons/md";
 import Button from "components/shared/Button";
 
 function ButtonsPage() {
   return (
     <>
       <div>
-        <Button
-          variation="primary"
-          onClick={() => console.log("onClick")}
-          className="mb-6"
-        >
-          <MdDelete />
-          Primary
-        </Button>
+        <Button variation="primary">Primary</Button>
       </div>
       <div>
         <Button variation="secondary">Secondary</Button>
