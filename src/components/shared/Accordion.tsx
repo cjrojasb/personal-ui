@@ -1,5 +1,5 @@
-import useExpanded from 'hooks/useExpanded';
-import { MdExpandLess, MdExpandMore } from 'react-icons/md';
+import useExpanded from "hooks/useExpanded";
+import { MdExpandLess, MdExpandMore } from "react-icons/md";
 
 export interface AccordionProps {
   items: any[];
@@ -12,12 +12,12 @@ function Accordion({ items }: AccordionProps) {
     <div key={`${label}_${index}`}>
       <div
         onClick={() => handleExpand(index)}
-        className='p-3 bg-gray-200 border-b cursor-pointer justify-between'
+        className="flex p-3 bg-gray-200 border-b cursor-pointer justify-between"
       >
         {label}
         <span>{isExpanded(index) ? <MdExpandLess /> : <MdExpandMore />}</span>
       </div>
-      {isExpanded(index) && <div className='p-3 transition-all'>{content}</div>}
+      {isExpanded(index) && <div className="p-3 transition-all">{content}</div>}
     </div>
   ));
 

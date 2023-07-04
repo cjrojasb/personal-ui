@@ -1,27 +1,20 @@
 import Accordion from "components/shared/Accordion";
 import "./index.css";
 import ButtonsPage from "components/pages/ButtonsPage";
-
-const ITEMS_ACCORDION = [
-  {
-    label: "React",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque exercitationem provident quas molestiae eum, est delectus recusandae dolore voluptates explicabo accusantium quibusdam perferendis, repellendus, aperiam saepe culpa libero itaque eius!",
-  },
-  {
-    label: "Angular",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque exercitationem provident quas molestiae eum, est delectus recusandae dolore voluptates explicabo accusantium quibusdam perferendis, repellendus, aperiam saepe culpa libero itaque eius!",
-  },
-  {
-    label: "Vue",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque exercitationem provident quas molestiae eum, est delectus recusandae dolore voluptates explicabo accusantium quibusdam perferendis, repellendus, aperiam saepe culpa libero itaque eius!",
-  },
-];
+import AccordionPage from "components/pages/AccordionPage";
+import DropdownPage from "components/pages/DropdownPage";
+import Divider from "components/shared/Divider";
 
 function App() {
-  return <Accordion items={ITEMS_ACCORDION} />;
+  return (
+    <div className="p-3 flex flex-col gap-5">
+      <ButtonsPage />
+      <Divider />
+      <AccordionPage />
+      <Divider />
+      <DropdownPage />
+    </div>
+  );
 }
 
 export default App;
