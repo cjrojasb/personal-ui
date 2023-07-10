@@ -1,25 +1,16 @@
-import Button from "components/shared/Button";
+import { Button } from "@cjrojasb/personal-ui-package";
 
 function ButtonsPage() {
   return (
     <>
       <div>
-        <Button variation="primary">Primary</Button>
-      </div>
-      <div>
-        <Button variation="secondary">Secondary</Button>
-      </div>
-      <div>
-        <Button variation="info">Info</Button>
-      </div>
-      <div>
-        <Button variation="success">Success</Button>
-      </div>
-      <div>
-        <Button variation="warning">Warning</Button>
-      </div>
-      <div>
-        <Button variation="danger">Danger</Button>
+        <Button
+          onClick={() => alert("onClick")}
+          variation="primary"
+          className="text-sm"
+        >
+          Primary
+        </Button>
       </div>
     </>
   );

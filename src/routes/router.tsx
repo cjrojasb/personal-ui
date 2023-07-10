@@ -3,6 +3,7 @@ import AccordionPage from "components/pages/AccordionPage";
 import ButtonsPage from "components/pages/ButtonsPage";
 import DropdownPage from "components/pages/DropdownPage";
 import ErrorPage from "components/pages/ErrorPage";
+import ModalPage from "components/pages/ModalPage";
 import Root from "components/Root";
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "dropdown",
         element: <DropdownPage />,
+      },
+      {
+        path: "modal",
+        element: <ModalPage />,
       },
     ],
   },
