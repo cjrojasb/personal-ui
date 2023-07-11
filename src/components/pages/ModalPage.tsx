@@ -1,14 +1,27 @@
 import { Button } from "@cjrojasb/personal-ui-package";
-import Modal from "components/shared/Modal";
 import { useState } from "react";
+import Modal from "components/shared/Modal";
 
 function ModalPage() {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const handleClose = () => setShowModal(false);
 
+  const modalRendered = (
+    <Modal
+      onClose={handleClose}
+      actionBar={
+        <Button variation="warning" onClick={handleClose}>
+          Cerrar
+        </Button>
+      }
+    >
+      <h1>Hola este es un modal</h1>
+    </Modal>
+  );
+
   return (
-    <div>
+    <div className="relative">
       <Button
         variation="info"
         className="text-lg"
@@ -16,7 +29,7 @@ function ModalPage() {
       >
         Ver Modal
       </Button>
-      {showModal && <Modal onClick={handleClose} />}
+      {showModal && modalRendered}
     </div>
   );
 }
