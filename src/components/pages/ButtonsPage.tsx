@@ -5,9 +5,8 @@ function ButtonsPage() {
     <>
       <div>
         <Button
-          onClick={() => alert("onClick")}
           variation="primary"
-          className="text-sm"
+          className="p-5"
         >
           Primary
         </Button>

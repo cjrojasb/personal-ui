@@ -5,6 +5,7 @@ import DropdownPage from "components/pages/DropdownPage";
 import ErrorPage from "components/pages/ErrorPage";
 import ModalPage from "components/pages/ModalPage";
 import Root from "components/Root";
+import TablePage from "components/pages/TablePage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "modal",
         element: <ModalPage />,
+      },
+      {
+        path: "table",
+        element: <TablePage />,
       },
     ],
   },
