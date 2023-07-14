@@ -1,9 +1,11 @@
+import SortableTable from "components/shared/SortableTable";
 import Table from "components/shared/Table";
 
 interface ConfigTableProps {
   label: string;
   render: (key: string) => React.ReactNode;
-  sort?: (a: any, b: any) => void;
+  header?: React.ReactNode | null;
+  sortValue?: () => void;
 }
 
 function TablePage() {
@@ -18,6 +20,7 @@ function TablePage() {
     {
       label: "Name",
       render: ({ name }: any) => name,
+      sortValue: ({ name }: any) => name,
     },
     {
       label: "Color",
@@ -25,7 +28,9 @@ function TablePage() {
     },
     {
       label: "Score",
+      header: () => null,
       render: ({ score }: any) => score,
+      sortValue: ({ score }: any) => score,
     },
   ];
 
@@ -57,15 +62,19 @@ function TablePage() {
 
   return (
     <div>
-      <Table
+      <h2 className="mb-2">Sortable Table</h2>
+      <SortableTable
         config={config}
+        configCustomHeader={({ header }) => (header ? true : false)}
+        configHeader={({ header }) => header && header()}
         configKey={({ label }) => label}
         configLabel={({ label }) => label}
         data={data}
         dataKey={({ name }) => name}
         renderConfig={(rowData, { render }) => render(rowData)}
       />
-      <hr className="border-1 my-6"/>
+      <hr className="border-1 my-6" />
+      <h2 className="mb-2">Basic Table</h2>
       <Table
         config={config2}
         configKey={({ label }) => label}

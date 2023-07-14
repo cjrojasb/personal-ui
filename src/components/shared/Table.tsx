@@ -1,27 +1,37 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 interface TableProps<TData, TConfig> {
   config: TConfig[];
   configKey: (item: TConfig) => string;
   configLabel: (item: TConfig) => string;
+  configHeader?: (item: TConfig) => React.ReactNode;
   renderConfig: (rowData: TData, item: TConfig) => React.ReactNode;
+  configCustomHeader?: (item: TConfig) => boolean;
   data: TData[];
   dataKey: (rowData: TData) => string;
 }
 
 function Table<TData, TConfig>({
-  data,
-  dataKey,
   config,
-  renderConfig,
+  configHeader,
   configKey,
+  data,
   configLabel,
+  dataKey,
+  renderConfig,
+  configCustomHeader,
 }: TableProps<TData, TConfig>) {
   const renderedHeadRows = (
     <tr className="border-b-2">
-      {config.map((item) => (
-        <th key={configKey(item)}>{configLabel(item)}</th>
-      ))}
+      {config.map((item) =>
+        configCustomHeader && configCustomHeader(item) ? (
+          <Fragment key={configKey(item)}>
+            {configHeader && configHeader(item)}
+          </Fragment>
+        ) : (
+          <th key={configKey(item)} className="p-2">{configLabel(item)}</th>
+        )
+      )}
     </tr>
   );
 
