@@ -6,6 +6,7 @@ import ErrorPage from "components/pages/ErrorPage";
 import ModalPage from "components/pages/ModalPage";
 import Root from "components/Root";
 import TablePage from "components/pages/TablePage";
+import CounterPage from "components/pages/CounterPage";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "table",
         element: <TablePage />,
+      },
+      {
+        path: "counter",
+        element: <CounterPage initialCount={10} />,
       },
     ],
   },
