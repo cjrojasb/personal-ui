@@ -3,8 +3,8 @@ import { PanelProps } from "interfaces/panelProps";
 
 function Panel({ children, ...rest }: PanelProps) {
   const customClassName = classNames(
-    "border rounded p-3 shadow bg-white w-full",
-    rest.className
+    rest.className,
+    "border rounded p-3 shadow bg-white w-full"
   );
 
   return (
