@@ -1,5 +1,6 @@
-import { useReducer } from "react";
 import { Button } from "@cjrojasb/personal-ui-package";
+import { produce } from "immer";
+import { useReducer } from "react";
 import Panel from "components/shared/Panel";
 
 interface CounterPageProps {
@@ -34,17 +35,18 @@ const reducer = (state: CounterState, action: CounterAction) => {
 
   switch (type) {
     case INCREMENT_COUNT:
-      return { ...state, count: state.count + payload };
-
+      state.count = state.count + payload;
+      return;
     case DECREMENT_COUNT:
-      return { ...state, count: state.count - payload };
-
+      state.count = state.count - payload;
+      return;
     case SET_VALUE_TO_ADD:
-      return { ...state, valueToAdd: payload };
-
+      state.valueToAdd = payload;
+      return;
     case ADD_VALUE_TO_COUNT:
-      return { ...state, count: state.count + state.valueToAdd, valueToAdd: 0 };
-
+      state.count = state.count + state.valueToAdd;
+      state.valueToAdd = 0;
+      return;
     default:
       return state;
   }
@@ -57,7 +59,7 @@ function CounterPage({ initialCount }: CounterPageProps) {
     ADD_VALUE_TO_COUNT,
     SET_VALUE_TO_ADD,
   } = CountererActionKind;
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(produce(reducer), {
     count: initialCount,
     valueToAdd: 0,
   });
