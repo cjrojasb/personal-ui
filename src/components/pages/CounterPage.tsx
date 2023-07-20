@@ -14,21 +14,21 @@ interface CounterState {
 enum CountererActionKind {
   INCREMENT_COUNT = "increment-count",
   DECREMENT_COUNT = "decrement-count",
-  ADD_VALUE_COUNT = "add-value-count",
+  ADD_VALUE_TO_COUNT = "add-value-count",
   SET_VALUE_TO_ADD = "set-value-to-add",
 }
 
 interface CounterAction {
   type: CountererActionKind;
-  payload: number;
+  payload?: number;
 }
 
 const reducer = (state: CounterState, action: CounterAction) => {
-  const { type, payload } = action;
+  const { type, payload = 0 } = action;
   const {
     INCREMENT_COUNT,
     DECREMENT_COUNT,
-    ADD_VALUE_COUNT,
+    ADD_VALUE_TO_COUNT,
     SET_VALUE_TO_ADD,
   } = CountererActionKind;
 
@@ -42,8 +42,8 @@ const reducer = (state: CounterState, action: CounterAction) => {
     case SET_VALUE_TO_ADD:
       return { ...state, valueToAdd: payload };
 
-    case ADD_VALUE_COUNT:
-      return { ...state, count: payload, valueToAdd: 0 };
+    case ADD_VALUE_TO_COUNT:
+      return { ...state, count: state.count + state.valueToAdd, valueToAdd: 0 };
 
     default:
       return state;
@@ -54,7 +54,7 @@ function CounterPage({ initialCount }: CounterPageProps) {
   const {
     INCREMENT_COUNT,
     DECREMENT_COUNT,
-    ADD_VALUE_COUNT,
+    ADD_VALUE_TO_COUNT,
     SET_VALUE_TO_ADD,
   } = CountererActionKind;
   const [state, dispatch] = useReducer(reducer, {
@@ -84,11 +84,8 @@ function CounterPage({ initialCount }: CounterPageProps) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { valueToAdd, count } = state;
-    console.log("valueToAdd", valueToAdd);
     dispatch({
-      type: ADD_VALUE_COUNT,
-      payload: valueToAdd + count,
+      type: ADD_VALUE_TO_COUNT,
     });
   };
 

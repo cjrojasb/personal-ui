@@ -15,14 +15,13 @@ function Dropdown({ options, value, onChange }: DropdownProps) {
   };
 
   useEffect(() => {
-    const handler = (event: any) => {
-      if (!divEl.current?.contains(event.target)) {
+    const handler = (event: MouseEvent) => {
+      if (!divEl.current?.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
 
     document.addEventListener("click", handler, true);
-
     return () => {
       document.removeEventListener("click", handler);
     };
