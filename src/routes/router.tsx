@@ -1,44 +1,17 @@
-import { createBrowserRouter } from "react-router-dom";
-import AccordionPage from "components/pages/AccordionPage";
-import ButtonsPage from "components/pages/ButtonsPage";
-import DropdownPage from "components/pages/DropdownPage";
-import ErrorPage from "components/pages/ErrorPage";
-import ModalPage from "components/pages/ModalPage";
-import Root from "components/Root";
-import TablePage from "components/pages/TablePage";
-import CounterPage from "components/pages/CounterPage";
+import { createBrowserRouter } from 'react-router-dom';
+import { ROUTES } from 'constants/routes';
+import ErrorPage from 'components/pages/ErrorPage';
+import Root from 'components/Root';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Root />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "button",
-        element: <ButtonsPage />,
-      },
-      {
-        path: "accordion",
-        element: <AccordionPage />,
-      },
-      {
-        path: "dropdown",
-        element: <DropdownPage />,
-      },
-      {
-        path: "modal",
-        element: <ModalPage />,
-      },
-      {
-        path: "table",
-        element: <TablePage />,
-      },
-      {
-        path: "counter",
-        element: <CounterPage initialCount={10} />,
-      },
-    ],
+    children: ROUTES.map(({ path, element }) => ({
+      path,
+      element,
+    })),
   },
 ]);
 
