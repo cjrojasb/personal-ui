@@ -2,7 +2,19 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      zIndex: {
+        "-1": "-1",
+      },
+      transformOrigin: {
+        0: "0%",
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
+  variants: {
+    extend: {
+      borderColor: ["responsive", "hover", "focus", "focus-within"],
+    },
+  },
 };

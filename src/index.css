@@ -5,3 +5,31 @@
 button > svg {
   margin-right: 5px;
 }
+
+/* input:focus-within ~ label,
+input:not(:placeholder-shown) ~ label {
+  @apply transform duration-300 scale-75 -translate-y-6;
+}
+
+input:focus-within ~ label {
+  @apply text-blue-500;
+}
+
+.outlined input:focus-within ~ label,
+.outlined input:not(:placeholder-shown) ~ label {
+  @apply transform scale-75 -translate-y-3 z-0 ml-1 px-1 py-0;
+}
+
+input:focus-within ~ label {
+  @apply text-blue-500;
+}
+
+input:not(:focus-within) ~ label {
+  @apply transform duration-300 scale-100;
+}
+
+.float-label-input:focus-within label,
+.float-label-input input:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.75);
+  background-color: white;
+} */
